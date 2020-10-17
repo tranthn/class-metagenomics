@@ -1,43 +1,7 @@
 #!/usr/bin/env python3
 import sys
-import re
+import os
 from sam import SAM
-
-# calculates percent identity given an MD string from SAM format
-# arguments:
-#   - md: MD string per SAM format, example below:
-# 
-# str. MD:Z:19A18A5T54G0
-# expl: 19 matches | 1 mismatch | 18 matches | 1 mismatch | 5 matches | 1 mismatch | 54 matches | 1 mismatch | 0 dummy separator
-#
-# returns:
-#   - percent identity (matches over total bases, including deletions)
-def identity(md):
-    s = md
-    tokens = re.split(r'(\d+)', s)
-    total = 0
-    matches = 0
-
-    for t in tokens:
-
-        # ignore MD:Z
-        if t.startswith('MD'):
-            continue        
-
-        elif t.isdigit():
-            matches += int(t)
-            total += int(t)
-        
-        elif t.startswith('^'):
-            dels = t.split('^')[1]
-            total += len(dels)
-        
-        # alphabetic characters representing mismatches
-        # we're not tracking mismatches independently, just add to total
-        elif t.isalpha():
-            total += len(t)
-    
-    return round(matches / total, 3)
 
 # parses filtered SAM file that only contains aligned reads
 #
@@ -54,9 +18,15 @@ def process_sam_file(input):
             with open(input, 'r') as inp:
                 for l in inp:
 
-                    # skip header lines
+                    # skip header lines, except for SN/LN
                     if (l.startswith('@')):
-                        continue
+                        if 'LN:' in l or 'SN:' in l:
+                            # splits header into 3 parts: @SQ, SN, LN
+                            parts = l.split('\t')
+                            ref_name = parts[1].split('SN:')[1]
+                            length = int(parts[2].split('LN:')[1].strip())
+                        else:
+                            continue
                     else:
                         sam = SAM(raw_str = l)
                         sam_reads.append(sam)
@@ -66,14 +36,23 @@ def process_sam_file(input):
             print("Exiting...")
             sys.exit(1)
 
-    return sam_reads
+    return { 'reads': sam_reads, 'len': length, 'ref': ref_name }
+
+def process_sam_file_dir(dir):
+    reads = []
+    for f in os.listdir(dir):
+        file = os.path.join(dir, f)
+        reads.append(process_sam_file(file))
+
+    return reads
 
 ### main ###
 if (len(sys.argv) > 1):
-    sam_reads = process_sam_file(input = sys.argv[1])
+    sam_reads = process_sam_file_dir(dir = sys.argv[1])
     for r in sam_reads:
-        i = identity(r.md)
-        print('\n{0}\nidentity:\t{1}'.format(r.md, i))
+        print(r['ref'])
+        print(r['len'])
+        print()
 else:
     print('No file argument was passed, exiting...')
     sys.exit(1)

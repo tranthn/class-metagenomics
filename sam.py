@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 import sys
+import re
 
 """
 SAM Format Basics
 - using SAM description courtesy of bowtie2 [http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml#sam-output]
 - 12 columns:
 
-    1: sample read name
+    1: name of aligned read from sample
     2: sum of flags
-    3: name of reference sequence - mate 1
+    3: name of matched reference sequence - mate 1
     4: offset - mate 1
     5: mapping quality
     6: CIGAR
-    7: name of reference sequence - mate 2
+    7: name of matched reference sequence - mate 2
     8: offset - mate 2
     9: fragment length
    10: read sequence
@@ -33,6 +34,46 @@ SAM Format Basics
 
 """
 
+# calculates percent identity given an MD string from SAM format
+# arguments:
+#   - md: MD string per SAM format, example below:
+# 
+# str. MD:Z:19A18A5T54G0
+# expl: 19 matches | 1 mismatch | 18 matches | 1 mismatch | 5 matches | 1 mismatch | 54 matches | 1 mismatch | 0 dummy separator
+#
+# returns:
+#   - float, percent identity (matches over total bases, including deletions)
+def identity(md):
+    s = md
+    tokens = re.split(r'(\d+)', s)
+    total = 0
+    matches = 0
+
+    # handle scenarios where MD may be empty or None
+    if md == '' or md is None:
+        return 0.0
+
+    for t in tokens:
+
+        # ignore MD:Z
+        if t.startswith('MD'):
+            continue        
+
+        elif t.isdigit():
+            matches += int(t)
+            total += int(t)
+        
+        elif t.startswith('^'):
+            dels = t.split('^')[1]
+            total += len(dels)
+        
+        # alphabetic characters representing mismatches
+        # we're not tracking mismatches independently, just add to total
+        elif t.isalpha():
+            total += len(t)
+
+    return round(matches / total, 3)
+
 ### parse line string representing SAM alignment
 class SAM():
     def __init__(self, raw_str = ""):
@@ -48,14 +89,33 @@ class SAM():
         # process raw string into parts
         self.split_str(raw_str)
 
-    # convenience for prettier printing if needed
+        # process MD string to set identity
+        self.identity = identity(self.md)
+
+    # default override for string printing
+    # prints all available attributes and identity
     def __str__(self):
         s = '\nsam-read'
         for i, p in enumerate(self.parts):
             s += '\n\t{0}\t{1}'.format(i, p)
 
         print('\tmd\t{0}'.format(self.md))
+        print('\tidentity\t{:.3%}'.format(self.identity))
         return s
+
+    def get_plot_objects(self):
+        obj = {
+            
+            # col 4 represents position for read 1, -1 for 0-indexing
+            'offset1': self.parts[3],
+
+            # col 8 represents offset for read 2, -1 for 0-indexing
+            'offset2': self.parts[7],
+            'md': self.md,
+            'identity': self.identity
+        }
+
+        return obj
 
     # splits maximimum of 11 times on tab-separated line
     # see top of file for quick breakdown of columns
