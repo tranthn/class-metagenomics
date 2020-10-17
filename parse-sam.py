@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 import sys
 import os
+import numpy
 from sam import SAM
+import graph
 
 # parses filtered SAM file that only contains aligned reads
 #
@@ -12,6 +14,8 @@ from sam import SAM
 #   - list of parsed SAM reads objects, using imported SAM class
 def process_sam_file(input):
     sam_reads = []
+    identities = []
+    coords = []
 
     if input != "":
         try:
@@ -30,18 +34,21 @@ def process_sam_file(input):
                     else:
                         sam = SAM(raw_str = l)
                         sam_reads.append(sam)
+                        identities.append(sam.get_identity())
+                        coords.append(sam.get_position())
 
         except IOError as err:
             print("There was an issue reading your file: {0}".format(err))
             print("Exiting...")
             sys.exit(1)
 
-    return { 'reads': sam_reads, 'len': length, 'ref': ref_name }
+    return { 'reads': sam_reads, 'coords': coords, 'identities': identities,'len': length, 'ref': ref_name }
 
 def process_sam_file_dir(dir):
     reads = []
     for f in os.listdir(dir):
         file = os.path.join(dir, f)
+        print('processing:\t{0}'.format(file))
         reads.append(process_sam_file(file))
 
     return reads
@@ -49,10 +56,10 @@ def process_sam_file_dir(dir):
 ### main ###
 if (len(sys.argv) > 1):
     sam_reads = process_sam_file_dir(dir = sys.argv[1])
-    for r in sam_reads:
-        print(r['ref'])
-        print(r['len'])
-        print()
+    r = sam_reads[0]
+    print('drawing graph...')
+    graph.draw_scatter(r['ref'], r['len'], r['coords'], r['identities'])
+    print()
 else:
     print('No file argument was passed, exiting...')
     sys.exit(1)

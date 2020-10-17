@@ -1,29 +1,33 @@
 #!/usr/bin/env python3
 import numpy as np
+from io import BytesIO
 import matplotlib.pyplot as plt
 import matplotlib.cbook as cbook
+import matplotlib
 
-# Load a numpy record array from yahoo csv data with fields date, open, close,
-# volume, adj_close from the mpl-data/example directory. The record array
-# stores the date as an np.datetime64 with a day unit ('D') in the date column.
-price_data = (cbook.get_sample_data('goog.npz', np_load=True)['price_data']
-              .view(np.recarray))
-price_data = price_data[-250:]  # get the most recent 250 trading days
+# draws scatter plot representing our fragment recruitment plot
+#
+# arguments
+#   - ref_name: name of reference genome (e.g. NC_1111)
+#   - ref_genome_len: length of reference genome, to be used for x-axis limit
+#   - positions: flat 1-d array of starting coordinates for aligned sequences from our sample
+#   - identities: flat 1-d array of identities matching above position coordinates
+#
+# returns
+#   - nothing, will save plot to output PNG
+def draw_scatter(ref_name, ref_genome_len, positions, identities):
+    x = positions
+    y = identities
+    colors = np.random.rand(len(x))
+    area = 4
 
-delta1 = np.diff(price_data.adj_close) / price_data.adj_close[:-1]
+    ## draw actual scatter plot
+    plt.scatter(x, y, s = area, c = colors, alpha = 0.5)
+    
+    ## set axes
+    plt.xlim(0, ref_genome_len)
+    plt.ylim(0, 1.1)
+    plt.grid()
 
-# Marker size in units of points^2
-volume = (15 * price_data.volume[:-2] / price_data.volume[0])**2
-close = 0.003 * price_data.close[:-2] / 0.003 * price_data.open[:-2]
-
-fig, ax = plt.subplots()
-ax.scatter(delta1[:-1], delta1[1:], c=close, s=volume, alpha=0.5)
-
-ax.set_xlabel(r'$\Delta_i$', fontsize=15)
-ax.set_ylabel(r'$\Delta_{i+1}$', fontsize=15)
-ax.set_title('Volume and percent change')
-
-ax.grid(True)
-fig.tight_layout()
-
-plt.show()
+    # save to output, rather than drawing inline
+    plt.savefig('{0}.png'.format(ref_name), format='png')

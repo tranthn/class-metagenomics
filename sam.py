@@ -103,19 +103,12 @@ class SAM():
         print('\tidentity\t{:.3%}'.format(self.identity))
         return s
 
-    def get_plot_objects(self):
-        obj = {
-            
-            # col 4 represents position for read 1, -1 for 0-indexing
-            'offset1': self.parts[3],
+    def get_position(self):
+        # col 4 represents position for read 1, -1 for 0-indexing
+        return int(self.parts[3])
 
-            # col 8 represents offset for read 2, -1 for 0-indexing
-            'offset2': self.parts[7],
-            'md': self.md,
-            'identity': self.identity
-        }
-
-        return obj
+    def get_identity(self):
+        return self.identity
 
     # splits maximimum of 11 times on tab-separated line
     # see top of file for quick breakdown of columns
