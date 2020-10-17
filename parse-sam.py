@@ -1,85 +1,52 @@
 #!/usr/bin/env python3
 import sys
 import re
+from sam import SAM
 
-"""
-SAM Format Basics
-- using SAM description courtesy of bowtie2 [http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml#sam-output]
-- 12 columns:
+# calculates percent identity given an MD string from SAM format
+# arguments:
+#   - md: MD string per SAM format, example below:
+# 
+# str. MD:Z:19A18A5T54G0
+# expl: 19 matches | 1 mismatch | 18 matches | 1 mismatch | 5 matches | 1 mismatch | 54 matches | 1 mismatch | 0 dummy separator
+#
+# returns:
+#   - percent identity (matches over total bases, including deletions)
+def identity(md):
+    s = md
+    tokens = re.split(r'(\d+)', s)
+    total = 0
+    matches = 0
 
-    1: sample read name
-    2: sum of flags
-    3: name of reference sequence - mate 1
-    4: offset - mate 1
-    5: mapping quality
-    6: CIGAR
-    7: name of reference sequence - mate 2
-    8: offset - mate 2
-    9: fragment length
-   10: read sequence
-   11: read qualities
-   12: optional fields (contains what we will want for our fragment recruitment plot)
-        - XM:i:<N> - number of mismatches
-        - MD:Z:<S> - represents mismatches relative to reference genome, only present for aligned reads
-             - will be main piece we can use for identity
-             - example: 58G18A22
-                - 58 matched bases
-                - 1 mismatch with a G (position 59)
-                - 18 matched bases
-                - 1 mismatch with an A (position 78)
-                - 22 matched bases
-                - total = 100 bases
+    for t in tokens:
 
-        ...and more
+        # ignore MD:Z
+        if t.startswith('MD'):
+            continue        
 
-"""
-
-### parse line string representing SAM alignment
-class SAM():
-    def __init__(self, raw_str = ""):
-        self.raw_str = raw_str
-        self.parts = []
+        elif t.isdigit():
+            matches += int(t)
+            total += int(t)
         
-        # mismatch representation, which we will use for identity calculate (see above format comments for more)
-        self.md = ''
-
-        # process raw string into parts
-        self.split_str(raw_str)
-
-    # convenience for prettier printing if needed
-    def __str__(self):
-        s = '\nsam-read'
-        for i, p in enumerate(self.parts):
-            s += '\n\t{0}\t{1}'.format(i, p)
-
-        print('\tmd\t{0}'.format(self.md))
-        return s
-
-    # splits maximimum of 11 times on tab-separated line
-    # see top of file for quick breakdown of columns
-    def split_str(self, s):
-        self.parts = s.split('\t', 11)
-
-        # tokenizes option values into relevant parts
-        # while there should be 12 columns for the aligned/filtered SAM files
-        # we will add a check just in case, to prevent out of bounds
-        if (len(self.parts) == 12):
-            options_col = self.parts[11]
-            opt_parts = options_col.split('\t')
-
-            # further tokenize the option column and find the MD value
-            for o in opt_parts:
-                if (o.find('MD') > -1):
-                    self.md = o
-
-            if (self.md == ''):
-                print(options_col)
-
-    def identity(self):
-        s = self.md
+        elif t.startswith('^'):
+            dels = t.split('^')[1]
+            total += len(dels)
         
+        # alphabetic characters representing mismatches
+        # we're not tracking mismatches independently, just add to total
+        elif t.isalpha():
+            total += len(t)
+    
+    return round(matches / total, 3)
 
-def process_file(input):
+# parses filtered SAM file that only contains aligned reads
+#
+# arguments:
+#   - input: file path to SAM file
+#
+# returns
+#   - list of parsed SAM reads objects, using imported SAM class
+def process_sam_file(input):
     sam_reads = []
 
     if input != "":
@@ -87,12 +54,13 @@ def process_file(input):
             with open(input, 'r') as inp:
                 for l in inp:
 
-                    # skip header line
+                    # skip header lines
                     if (l.startswith('@')):
                         continue
                     else:
                         sam = SAM(raw_str = l)
                         sam_reads.append(sam)
+
         except IOError as err:
             print("There was an issue reading your file: {0}".format(err))
             print("Exiting...")
@@ -102,9 +70,10 @@ def process_file(input):
 
 ### main ###
 if (len(sys.argv) > 1):
-    sam_reads = process_file(input = sys.argv[1])
+    sam_reads = process_sam_file(input = sys.argv[1])
     for r in sam_reads:
-        print(r)
+        i = identity(r.md)
+        print('\n{0}\nidentity:\t{1}'.format(r.md, i))
 else:
     print('No file argument was passed, exiting...')
     sys.exit(1)
