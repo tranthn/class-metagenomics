@@ -6,8 +6,9 @@ import argparse
 from sam import SAM
 import graph
 
+# globals to store name mappings and output directory
 global name_maps
-global out
+global output_dir
 
 # parses filtered SAM file that only contains aligned reads
 #
@@ -87,10 +88,9 @@ def graph_sam_read(read, filename):
     org_name = name_maps[read['ref']]
 
     print('drawing graph for\t{0}'.format(fname))
-    graph.draw_scatter(prefix = fname, output_dir = out, organism = org_name, positions = read['coords'], identities = read['identities'])
+    graph.draw_scatter(prefix = fname, output_dir = output_dir, organism = org_name, positions = read['coords'], identities = read['identities'])
 
-### main ###
-
+################# main #################
 # use parser to make the script a little more friendly, versus directly using sys.argv
 # only 2 arguments:
 #   input: can be a file or a directory where SAM files are located
@@ -104,7 +104,7 @@ args = parser.parse_args()
 if not os.path.exists(args.output):
     os.makedirs(args.output)
 
-out = args.output
+output_dir = args.output
 
 # set global name mappings to cross-reference taxon/accession/organism names
 name_maps = get_name_mappings()

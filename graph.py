@@ -30,7 +30,12 @@ def draw_scatter(prefix, output_dir, organism, positions, identities):
     # set labels for axes
     plot.ylabel('% identity')
     plot.xlabel('position [Mbp]')
-    plot.title(organism)
+
+    # determine which algorithm was used, so we can indicate in graph
+    if ('bwa' in prefix):
+        plot.title(organism + ' [BWA]')
+    else:
+        plot.title(organism + ' [Bowtie2]')
 
     # set axes boundaries
     # add a bit of buffer to percent identity for min and max for easier visualization
