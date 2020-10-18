@@ -74,15 +74,19 @@ def identity(md):
 
     return round(matches / total, 3)
 
-### parse line string representing SAM alignment
+# parse line string representing SAM alignment
+# this class throws away a lot of the information from the SAM read
+# since we're focused on drawing the fragment recruitment plot
+# since even filtered SAM files can be multiple GB, this is primarily for space and efficiency
 class SAM():
-    def __init__(self, raw_str = ""):
-        self.raw_str = raw_str
+    def __init__(self, raw_str = ""):       
+        # column 4 (position)
+        self.position = ''
 
-        # hold the tokenized parts of the SAM string
-        # should be 12 parts representing the columns for SAM string 
-        self.parts = []
-        
+        # column 6 (CIGAR)
+        self.cigar = ''
+
+        # column 12 (optional fields)
         # mismatch representation, which we will use for identity calculate (see above format comments for more)
         self.md = ''
 
@@ -103,23 +107,19 @@ class SAM():
         print('\tidentity\t{:.3%}'.format(self.identity))
         return s
 
-    def get_position(self):
-        # col 4 represents position for read 1, -1 for 0-indexing
-        return int(self.parts[3])
-
-    def get_identity(self):
-        return self.identity
-
     # splits maximimum of 11 times on tab-separated line
     # see top of file for quick breakdown of columns
     def split_str(self, s):
-        self.parts = s.split('\t', 11)
+        parts = s.split('\t', 11)
+        
+        self.position = int(parts[3])
+        self.cigar = parts[5]
 
         # tokenizes option values into relevant parts
         # while there should be 12 columns for the aligned/filtered SAM files
         # we will add a check just in case, to prevent out of bounds
-        if (len(self.parts) == 12):
-            options_col = self.parts[11]
+        if (len(parts) == 12):
+            options_col = parts[11]
             opt_parts = options_col.split('\t')
 
             # further tokenize the option column and find the MD value

@@ -34,8 +34,8 @@ def process_sam_file(input):
                     else:
                         sam = SAM(raw_str = l)
                         sam_reads.append(sam)
-                        identities.append(sam.get_identity())
-                        coords.append(sam.get_position())
+                        identities.append(sam.identity)
+                        coords.append(sam.position)
 
         except IOError as err:
             print("There was an issue reading your file: {0}".format(err))
@@ -55,9 +55,16 @@ def process_sam_file_dir(dir):
 
 ### main ###
 if (len(sys.argv) > 1):
-    sam_reads = process_sam_file_dir(dir = sys.argv[1])
-    r = sam_reads[0]
+    arg = sys.argv[1]
+    if os.path.isdir(arg):
+        sam_reads = process_sam_file_dir(dir = sys.argv[1])
+        r = sam_reads[0]
+    else:
+        r = process_sam_file(arg)
+
     print('drawing graph...')
+    print(r['coords'])
+    print(r['identities'])
     graph.draw_scatter(r['ref'], r['len'], r['coords'], r['identities'])
     print()
 else:

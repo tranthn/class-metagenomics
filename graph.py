@@ -19,10 +19,10 @@ def draw_scatter(ref_name, ref_genome_len, positions, identities):
     x = positions
     y = identities
     colors = np.random.rand(len(x))
-    area = 4
+    area = 2
 
     ## draw actual scatter plot
-    plt.scatter(x, y, s = area, c = colors, alpha = 0.5)
+    plt.scatter(x, y, s = area, c = colors, alpha = 0.5, marker = '.')
     
     ## set axes
     plt.xlim(0, ref_genome_len)
