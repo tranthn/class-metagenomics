@@ -50,12 +50,12 @@ def process_sam_file(input):
 
 # wrapper to call process_sam_file given a directory of SAM files
 def process_sam_file_dir(dir):
-    reads = []
     for f in os.listdir(dir):
         if (f.endswith('.sam')):
             file = os.path.join(dir, f)
             print('processing:\t{0}'.format(file))
-            reads.append(process_sam_file(file))
+            read = process_sam_file(file)
+            graph_sam_read(read, file)
 
     return reads
 
@@ -80,7 +80,7 @@ def graph_sam_read(read, filename):
     # since we could have filenames in different directory paths
     # we only want the base filename without directory to use as prefix
     fname = os.path.basename(filename)
-    org_name = name_maps[r['ref']]
+    org_name = name_maps[read['ref']]
 
     print('drawing graph for {0}...'.format(fname))
     graph.draw_scatter(prefix = fname, organism = org_name, positions = read['coords'], identities = read['identities'])
@@ -95,8 +95,6 @@ if (len(sys.argv) > 1):
     # process directory of SAM files, will call the directory wrapper helper
     if os.path.isdir(arg):
         sam_reads = process_sam_file_dir(dir = sys.argv[1])
-        for r in sam_reads:
-            graph_sam_read(r, arg)
 
     # process singular SAM file
     else:

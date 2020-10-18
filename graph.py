@@ -36,7 +36,8 @@ def draw_scatter(prefix, organism, positions, identities):
     plot.ylim(y.min() - 0.1, 1.0)
     plot.grid()
 
-    file_name = 'out/' + prefix + '.graph'
+    file_name = 'out/' + prefix + '.graph.png'
+    print('writing graph out to {0}'.format(file_name))
 
     # save to output, rather than drawing inline
-    plot.savefig('{0}.png'.format(file_name), format='png')
+    plot.savefig('{0}'.format(file_name), format='png')
