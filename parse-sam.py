@@ -10,7 +10,7 @@ import graph
 global name_maps
 global output_dir
 
-# parses filtered SAM file that only contains aligned reads
+# parses filtered SAM file (with header) that only contains aligned reads
 #
 # arguments:
 #   - input: file path to SAM file

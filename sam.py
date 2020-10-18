@@ -55,7 +55,7 @@ def identity(md):
 
     for t in tokens:
 
-        # ignore MD:Z
+        # ignore MD:Z line
         if t.startswith('MD'):
             continue        
 
@@ -63,6 +63,7 @@ def identity(md):
             matches += int(t)
             total += int(t)
         
+        # deletions count towards final total
         elif t.startswith('^'):
             dels = t.split('^')[1]
             total += len(dels)

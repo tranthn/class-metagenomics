@@ -13,11 +13,13 @@ import matplotlib
 # returns
 #   - nothing, will save plot to output PNG
 def draw_scatter(prefix, output_dir, organism, positions, identities):
-    def f(x):
+    # helper to scale down coordinate values, represented as Mbp
+    def as_mbp(x):
         return x / 1000000
 
+    # convert arrays to numpy arrays to allow use of some convenience methods
     x = np.array(positions)
-    x = np.array([f(xi) for xi in x])
+    x = np.array([as_mbp(xi) for xi in x])
     y = np.array(identities)
 
     colors = np.random.rand(len(x))

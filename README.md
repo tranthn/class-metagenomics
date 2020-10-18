@@ -45,4 +45,3 @@ saving graph to		frps/28132.bowtie2.bridged.aligned.sam.graph.png
 ### Extra Notes
 * While the directory path version of the command will work, in practice, Python will eat up a lot of memory with the larger SAM files if it processes them in batch
 * I'd suggest processing the very large files (> 1GB) individually and calculate the remainder in batch
-* Some of the graph files saved to output PNG file without grid lines, while some retained their grid lines
