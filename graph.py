@@ -12,7 +12,7 @@ import matplotlib
 #
 # returns
 #   - nothing, will save plot to output PNG
-def draw_scatter(prefix, organism, positions, identities):
+def draw_scatter(prefix, output_dir, organism, positions, identities):
     def f(x):
         return x / 1000000
 
@@ -23,21 +23,24 @@ def draw_scatter(prefix, organism, positions, identities):
     colors = np.random.rand(len(x))
     area = 3
 
-    ## draw actual scatter plot
+    # draw actual scatter plot
+    # use the '.' / period marker to reduce the density of the points on graph
     plot.scatter(x, y, s = area, c = colors, alpha = 0.5, marker = '.')
 
-    ## set labels for axes
+    # set labels for axes
     plot.ylabel('% identity')
     plot.xlabel('position [Mbp]')
     plot.title(organism)
 
-    ## set axes boundaries
-    ## add a bit of buffer to percent identity for min and max for easier visualization
+    # set axes boundaries
+    # add a bit of buffer to percent identity for min and max for easier visualization
     plot.ylim(y.min() - 0.1, 1.0)
     plot.grid()
 
-    file_name = 'out/' + prefix + '.graph.png'
-    print('writing graph out to {0}'.format(file_name))
+    # keep all PNGs contained in specified output directory
+    file_name = output_dir + '/' + prefix + '.graph.png'
+    print('saving graph to\t\t{0}'.format(file_name))
+    print()
 
     # save to output, rather than drawing inline
     plot.savefig('{0}'.format(file_name), format='png')

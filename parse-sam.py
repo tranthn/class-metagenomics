@@ -2,8 +2,12 @@
 import sys
 import json
 import os
+import argparse
 from sam import SAM
 import graph
+
+global name_maps
+global out
 
 # parses filtered SAM file that only contains aligned reads
 #
@@ -49,23 +53,23 @@ def process_sam_file(input):
     return { 'reads': sam_reads, 'coords': coords, 'identities': identities,'len': length, 'ref': ref_name }
 
 # wrapper to call process_sam_file given a directory of SAM files
+# will filter for files that end with *.sam extension only, in case
+# there are other non-sam files within the directory
 def process_sam_file_dir(dir):
     for f in os.listdir(dir):
         if (f.endswith('.sam')):
             file = os.path.join(dir, f)
-            print('processing:\t{0}'.format(file))
+            print('processing file\t\t{0}'.format(file))
             read = process_sam_file(file)
             graph_sam_read(read, file)
 
-    return reads
-
 # helper to parse name-mapping json, which maps
-# taxon ID x organism name x NCBI accession number
-# SAM files contain the accession number, but we want the organism name
+# taxon ID, organism name, and NCBI accession number
+# SAM files only contain the accession number, but we want the organism name
 def get_name_mappings():
     with open('name-mapping.json') as f:
         data = json.load(f)
-    
+
     name_map = {}
 
     # convert the json objects to mapped values
@@ -82,27 +86,35 @@ def graph_sam_read(read, filename):
     fname = os.path.basename(filename)
     org_name = name_maps[read['ref']]
 
-    print('drawing graph for {0}...'.format(fname))
-    graph.draw_scatter(prefix = fname, organism = org_name, positions = read['coords'], identities = read['identities'])
+    print('drawing graph for\t{0}'.format(fname))
+    graph.draw_scatter(prefix = fname, output_dir = out, organism = org_name, positions = read['coords'], identities = read['identities'])
 
 ### main ###
-global name_maps
 
-if (len(sys.argv) > 1):
-    arg = sys.argv[1]
-    name_maps = get_name_mappings()
+# use parser to make the script a little more friendly, versus directly using sys.argv
+# only 2 arguments:
+#   input: can be a file or a directory where SAM files are located
+#   output: directory to store PNG files for FRP, will be created if it doesn't exist yet
+parser = argparse.ArgumentParser(description='Create fragment recruitment plots FRP (PNG) given input SAM files')
+parser.add_argument('-input', dest='input', help='file or directory path of SAM files', required=True)
+parser.add_argument('-output', dest='output', help='output directory to store FRP PNG files', required=True)
+args = parser.parse_args()
 
-    # process directory of SAM files, will call the directory wrapper helper
-    if os.path.isdir(arg):
-        sam_reads = process_sam_file_dir(dir = sys.argv[1])
+# create folder for output images, if it doesn't exist yet
+if not os.path.exists(args.output):
+    os.makedirs(args.output)
 
-    # process singular SAM file
-    else:
-        if (arg.endswith('.sam')):
-            r = process_sam_file(arg)
-            graph_sam_read(r, arg)
+out = args.output
 
-    print()
+# set global name mappings to cross-reference taxon/accession/organism names
+name_maps = get_name_mappings()
+
+# process directory of SAM files, will call the directory wrapper helper
+if os.path.isdir(args.input):
+    process_sam_file_dir(dir = args.input)
+
+# process singular SAM file
 else:
-    print('No file argument was passed, exiting...')
-    sys.exit(1)
+    if (args.input.endswith('.sam')):
+        r = process_sam_file(args.input)
+        graph_sam_read(r, args.input)
