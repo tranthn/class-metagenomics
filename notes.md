@@ -1,34 +1,6 @@
 # project proposal ideas
 date: 11/29/2020
 
-## directions
-You must write a one-page, detailed proposal of your project. 
-
-It should represent something of approximately the same depth and workload as the mid-term project I defined. The proposal should include:
-1. Brief background on your study's topic.
-2. Description of analysis you want to perform. What question does it attempt to answer?
-3. Description of your input data. (scale, formats, etc.)
-4. What process will you follow, and what tools are required for your analysis? This includes any installations you will need to perform (or requests for me to perform) as well as custom scripts you plan on writing. This doesn't have to be absolute, I know things will come up, but I want to see that you've thought the analysis out at least initially.
-5. How will you present the results? Data tables, graphical chart types, web interface, etc.
-
-It's pretty rare that I have rejected a project in my other courses – it's more often that I'll suggest additions or modifications to make it fit more with the course or meet project requirements. I'll also be doing everything I can to respond to your submitted proposals within a day or two of their submission. 
-
-For these reasons, you should consider it generally safe to get started on your project immediately upon submission if you want/need to get as much time in as possible before the due date. Both the proposal and project submission itself will be done within Blackboard. Under “Lessons” you'll find areas for both.
-
-### write-up
-Because I'm allowing such a wide range of topics and activities, proposed by you, for this final, I cannot provide a single description of the write-up requirements that will apply to everyone. Instead, I will provide general requirements below and then more specific ones individually with the e-mail you'll receive when I approve your project.
-The target reader of your write-up should be someone who has only a cursory knowledge of what metagenomics is about. This means that your introduction should introduce metagenomics in general and discuss its importance. Then, you should provide background on your specific area of study for the project with references to previous work.
-
-Again, I'll send details of the sections expected in your specific project with your acceptance e-mail, but there are some sections most should have, such as Methods, Results, Data/Code Availability, Discussion, and References.
-
-The paper should be at least 2 pages in length using the template provided in the lesson, usually 3-4, and code should be attached as separate files (or left on the DIAG file system) rather than pasted within the document. PDF format is preferred, especially if you employ advanced formatting or embedded images.
-
-### example project prompt for visualizations
-1. Create a visual interface for data from a topic from the course. 
-    No, this wasn't something that was taught in this course, but I know many of you bring skills of your own to the course that you might be interested in applying. Every semester I've had at least one or two students obsessed with data visualization and I want to allow them to run with it. I know that it's difficult to create a great interface without really knowing the underlying data and methods, so this will come out in a good interface.       
-
----
-
 ## visualize interface / visualization ideas
 ### metagenome -> phylogenetic analysis -> graph pipeline
 * would need good documentation and example input data (shortened if needed) as if this were to be published to github for general usage, per professor
@@ -120,3 +92,12 @@ The paper should be at least 2 pages in length using the template provided in th
    - Subject: [HMP link](https://portal.hmpdacc.org/cases/596fc2de57601ec08a01fdee59087b8a)
 * sample GFF3 file: https://portal.hmpdacc.org/files/c3da055b4f1c6b91a79d82ec2e3cb889
 * random fasta (from gingiva): https://portal.hmpdacc.org/files/54a24ca84a57a7d5b06687939f620d69
+
+---
+
+## plotly
+* dependencies
+        
+        pip3 install scipy
+        pip3 install plotly
+        
