@@ -1,4 +1,5 @@
-d3.json("flare-2.json").then(function(data) {
+// d3.json("flare.json").then(function(data) {
+d3.json("phylo-test.json").then(function(data) {
     console.log(data);
 
     width = 932
@@ -15,8 +16,8 @@ d3.json("flare-2.json").then(function(data) {
 
     partition = data => {
         const root = d3.hierarchy(data)
-            .sum(d => d.value)
-            .sort((a, b) => b.value - a.value);
+            .sum(d => d["@branch_length"])
+            .sort((a, b) => b["@branch_length"] - a["@branch_length"]);
         return d3.partition()
             .size([2 * Math.PI, root.height + 1])
             (root);

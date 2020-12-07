@@ -5,49 +5,29 @@ import xml.etree.cElementTree as etree
 from Bio import Phylo
 import xmltodict
 
-def parseXML(file_name):
-    # Parse XML with ElementTree
-    tree = etree.ElementTree(file=file_name)
-    root = tree.getroot()
-
-    # get the information via the children!
-    print("-" * 25)
-    print("Iterating using getchildren()")
-    print("-" * 25)
-    print()
-    print(root)
-    for node in root:
-        for child in node:
-            print("{0} = {1}".format(child.tag, child.text))
-
-        print()
-
-def parseBio(file_name):
-    tree = Phylo.read(file_name,'phyloxml')
-    return tree
-    # print(tree)
-
 def xml_to_json(file_name):
     with open(file_name) as f:
         output = xmltodict.parse(f.read())
-    
     return output
 
-def write_out_json(xml_dict, fname):
+def write_out_json(phylo, fname):
     with open(fname, 'w') as f:
-        f.write(xml_dict)
+        f.write(phylo)
+
+def rename_dict_key(d, old_key, new_key):
+    for k,v in d.items():
+        if k == old_key:
+            d[new_key] = d.pop(old_key)
+        if isinstance(v, dict):
+            rename_dict_key(v, old_key, new_key)
 
 ###########################################################################
-# parseXML('../data/books.xml')
-# parseXML('../data/test.xml')
-# parseBio('../data/test.xml')
-# tree = parseBio('../data/phyloxml-hmp.xml')
-# Phylo.draw_ascii(tree)
-
-# out = xml_to_json('../data/books.xml')
-# out = xml_to_json('../data/test.xml')
-fname = '../data/phyloxml-hmp.xml'
+# fname = '../data/phyloxml-hmp.xml'
 fname = '../data/test.xml'
 out = xml_to_json(fname)
-json = json.dumps(out)
+rename_dict_key(out, 'clade', 'children')
+print(out)
+unnest = out['phyloxml']['phylogeny']['children']
+unnest['name'] = 'root'
+json = json.dumps(unnest)
 write_out_json(json, 'test_out.json')

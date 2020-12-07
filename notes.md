@@ -61,11 +61,11 @@ date: 11/29/2020
 
 * another snippet:
 
-        Sequence_ID	                           Hit_Coordinates	NCBI_Taxon_ID	Taxon_Rank	    Taxon_Name	Cumulative_Probability_Mass 	Markers_Hit
+        Sequence_ID	                           Hit_Coordinates	NCBI_Taxon_ID	Taxon_Rank	Taxon_Name	Cumulative_Probability_Mass 	Markers_Hit
         SRR041662.12249849 HWUSI-EAS776_61BNN:5:75:685:197	2.94	1	        no rank	        ROOT	0.64945979602372	concat
         SRR041662.12249849 HWUSI-EAS776_61BNN:5:75:685:197	2.94	131567      no rank	        CELLULAR ORGANISMS	0.64945979602372	concat
         SRR041662.12249849 HWUSI-EAS776_61BNN:5:75:685:197	2.94	2	        superkingdom	BACTERIA	0.64945979602372	concat
-        SRR041662.12249849 HWUSI-EAS776_61BNN:5:75:685:197	2.94	68336       superphylum	    BACTEROIDETES/CHLOROBI GROUP	0.64945979602372	concat
+        SRR041662.12249849 HWUSI-EAS776_61BNN:5:75:685:197	2.94	68336       superphylum	        BACTEROIDETES/CHLOROBI GROUP	0.64945979602372	concat
         SRR041662.12249849 HWUSI-EAS776_61BNN:5:75:685:197	2.94	976	        phylum	        BACTEROIDETES	0.64945979602372	concat
         SRR041662.12249849 HWUSI-EAS776_61BNN:5:75:685:197	2.94	171549      order	        BACTEROIDALES	0.64945979602372	concat
         SRR041662.12249849 HWUSI-EAS776_61BNN:5:75:685:197	2.94	200643      class	        BACTEROIDIA	0.64945979602372	concat
@@ -95,9 +95,9 @@ date: 11/29/2020
 
 ---
 
-## plotly
-* dependencies
-        
+## dependencies
+* https://github.com/martinblech/xmltodict        
+
         pip3 install scipy - nvm
         pip3 install plotly
         pip3 install xmldtodic

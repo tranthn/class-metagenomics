@@ -1,31 +1,20 @@
 {
-    "phyloxml": {
-        "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-        "@xsi:schemaLocation": "http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd",
-        "@xmlns": "http://www.phyloxml.org",
-        "phylogeny": {
-            "@rooted": "true",
-            "name": "example from Prof. Joe Felsenstein's book \"Inferring Phylogenies\"",
-            "description": "phyloXML allows to use either a \"branch_length\" attribute or element to indicate branch lengths.",
-            "clade": {
-                "clade": [{
-                        "@branch_length": "0.06",
-                        "clade": [{
-                                "@branch_length": "0.102",
-                                "name": "A"
-                            },
-                            {
-                                "@branch_length": "0.23",
-                                "name": "B"
-                            }
-                        ]
-                    },
-                    {
-                        "@branch_length": "0.4",
-                        "name": "C"
-                    }
-                ]
-            }
+    "children": [{
+            "@branch_length": "0.06",
+            "clade": [{
+                    "@branch_length": "0.102",
+                    "name": "A"
+                },
+                {
+                    "@branch_length": "0.23",
+                    "name": "B"
+                }
+            ]
+        },
+        {
+            "@branch_length": "0.4",
+            "name": "C"
         }
-    }
+    ],
+    "name": "root"
 }
