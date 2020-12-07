@@ -98,6 +98,6 @@ date: 11/29/2020
 ## plotly
 * dependencies
         
-        pip3 install scipy
+        pip3 install scipy - nvm
         pip3 install plotly
-        
+        pip3 install xmldtodic
