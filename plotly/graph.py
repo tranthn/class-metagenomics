@@ -2,6 +2,8 @@
 import plotly.express as px
 import plotly.figure_factory as ff
 import numpy as np
+from ete3 import ClusterTree, TreeStyle
+from itertools import combinations
 
 data = dict(
     # parents=["", "Eve", "Eve", "Seth", "Seth", "Eve", "Eve", "Awan", "Eve" ],
@@ -11,22 +13,34 @@ data = dict(
     children=['root', '_PROTEOBACTERIA_{8114}', '_DEFERRIBACTERES__DEFERRIBACTERES__DEFERRIBACTERALES__DEFERRIBACTERACEAE_{10}', 'DESULFURISPIRILLUM_INDICUM_S5[653733]{0}', '_DEFERRIBACTERES__DEFERRIBACTERES__DEFERRIBACTERALES__DEFERRIBACTERACEAE_{9}', '_DEFERRIBACTERES__DEFERRIBACTERES__DEFERRIBACTERALES__DEFERRIBACTERACEAE_{5}', '_DENITROVIBRIO__DENITROVIBRIO_ACETIPHILUS__DENITROVIBRIO_ACETIPHILUS_DSM_12809_{8}', '_PROTEOBACTERIA_{8113}', '_BACTEROIDETES_CHLOROBI_GROUP_{1235}', '_SPIROCHAETES__SPIROCHAETIA__SPIROCHAETALES_{491}', '_BACTEROIDETES_CHLOROBI_GROUP_{1234}', '_PROTEOBACTERIA_{8112}', '_PROTEOBACTERIA_{8110}', 'FOSSIL_METAGENOME[444079]{8111}', '_DELTAPROTEOBACTERIA_{8425}', '_ACIDOBACTERIA_{8297}', '_ACIDOBACTERIA_{8227}', '_ACIDOBACTERIA_{8197}', '_CANDIDATE_DIVISION_NC10_{8226}', '_NITROSPIRAE__NITROSPIRA__NITROSPIRALES__NITROSPIRACEAE_{8296}', '_NITROSPINAE__NITROSPINIA__NITROSPINALES__NITROSPINACEAE__NITROSPINA_{8250}', '_NITROSPIRAE__NITROSPIRA__NITROSPIRALES__NITROSPIRACEAE_{8295}', '_DELTAPROTEOBACTERIA_{8424}', '_THERMODESULFOBACTERIA__THERMODESULFOBACTERIA__THERMODESULFOBACTERIALES__THERMODESULFOBACTERIACEAE_{8306}', '1.000{8300}', '_THERMODESULFOBACTERIA__THERMODESULFOBACTERIA__THERMODESULFOBACTERIALES__THERMODESULFOBACTERIACEAE_{8305}', '_DELTAPROTEOBACTERIA_{8423}', '_DELTAPROTEOBACTERIA_{8391}', '_DELTAPROTEOBACTERIA_{8422}', '_PROTEOBACTERIA_{12664}', '_DELTAPROTEOBACTERIA_{8476}', '_MYXOCOCCALES_{8456}', '_MYXOCOCCALES_{8444}', '_MYXOCOCCALES_{8455}', '_BDELLOVIBRIONALES_{8475}', '_BDELLOVIBRIONACEAE__BDELLOVIBRIO_{8465}', '_BACTERIOVORACACEAE__BACTERIOVORAX__BACTERIOVORAX_MARINUS__BACTERIOVORAX_MARINUS_SJ_{8474}', '_PROTEOBACTERIA_{12663}', '_SAR324_CLUSTER_{8483}', 'SAR324_CLUSTER_BACTERIUM_JCVI_SC_AAA005[1073573]{8477}', '_SAR324_CLUSTER_{8482}', '_PROTEOBACTERIA_{12662}', '_ALPHAPROTEOBACTERIA_{9378}', '_GAMMAPROTEOBACTERIA_{12661}'],
     values=[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
 
-fig = px.sunburst(
-    data,
-    parents="parents",
-    names="children",
-    values="values",
-)
-fig.show()
+# fig = px.sunburst(
+#     data,
+#     parents="parents",
+#     names="children",
+#     values="values",
+# )
+# fig.show()
 
 ######################################################################
-X = np.array([
-    [1, 0.1],
-    [1, 0.2],
-    [0.5, 0.3],
-    [0.7, 0.4]
-])
-labels = ["A", "B", "C", "D"]
-# fig = ff.create_dendrogram(X, labels = labels)
-# fig.update_layout(width=900, height=500)
-# fig.show()
+
+newickstr = "(Bovine:0.69395,(Gibbon:0.36079,(Orang:0.33636,(Gorilla:0.17147,(Chimp:0.19268, Human:0.11927):0.08386):0.06124):0.15057):0.54939,Mouse:1.21460):0.10;"
+# tree = ClusterTree('(A:0.1,B:0.2,(C:0.3,D:0.4):0.5);')
+tree = ClusterTree(newickstr)
+leaves = tree.get_leaf_names()
+# idx_dict = {'A':0,'B':1,'C':2,'D':3}
+idx_dict = {'Bovine': 0, 'Gibbon': 1, 'Orang': 2, 'Gorilla': 3, 'Chimp': 4, 'Human': 5, 'Mouse': 6}
+dict_keys = list(idx_dict.keys())
+dict_values = list(idx_dict.values())
+idx_labels = [dict_keys[dict_values.index(i)] for i in range(0, len(idx_dict))]
+
+dmat = np.zeros((7,7))
+
+for l1,l2 in combinations(leaves,2):
+    d = tree.get_distance(l1,l2)
+    dmat[idx_dict[l1],idx_dict[l2]] = dmat[idx_dict[l2],idx_dict[l1]] = d
+
+labels = dict_keys
+fig = ff.create_dendrogram(dmat, labels = labels, orientation = 'left')
+fig.update_layout(width=1200, height=800)
+fig.show()
+

@@ -98,6 +98,8 @@ date: 11/29/2020
 ## dependencies
 * https://github.com/martinblech/xmltodict        
 
-        pip3 install scipy - nvm
+        pip3 install scipy
         pip3 install plotly
         pip3 install xmldtodic
+        pip3 install PyQt5
+        pip3 install ete3
