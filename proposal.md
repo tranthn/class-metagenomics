@@ -25,3 +25,6 @@ Other deliverables will include detailed documentation on sample input data, ins
 1. Darling AE, Jospin G, Lowe E, Matsen FA IV, Bik HM, Eisen JA. 2014. PhyloSift: phylogenetic analysis of genomes and metagenomes. PeerJ. [https://doi.org/10.7717/peerj.243](https://doi.org/10.7717/peerj.243)
 1. PhyloSift. A. E. Darling, G. Jospin, E. Lowe, F. A. Matsen, H. M. Bik, J. A. Eisen. Submitted to PeerJ. [https://phylosift.wordpress.com/](https://phylosift.wordpress.com/)
 1. Plotly. [https://plotly.com/python](https://plotly.com/python)
+
+# Feedback from Professor
+I appreciate efforts to advance dataviz in bioinformatics, so look forward to seeing what you create here.  Be sure that you have a working version ready to test on your Google VM instance.  It's OK to shut it down until I grade it, just let me know what the instance name is and any special instructions I need to test it.  Due to grading time constraints once finals are posted, i will not able to go through all the steps to set this up locally.

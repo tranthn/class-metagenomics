@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 import json
 import xmltodict
-# import re
-# import xml.etree.cElementTree as etree
-# from Bio import Phylo
-
 
 def xml_to_json(file_name):
     with open(file_name) as f:
@@ -24,7 +20,7 @@ def max_depth(root):
 
 def traverse_depth(root, max_depth = None, depth = 0):
     if 'clade' in root.keys():
-        if (depth == max_depth):
+        if (not max_depth is None) and (depth == max_depth):
             root['value'] = 1
             root.pop('clade')
         else:
@@ -33,6 +29,16 @@ def traverse_depth(root, max_depth = None, depth = 0):
 
     else:
         root['value'] = 1
+
+def flatten_plotly(root, parents = [], children = [], parent = 'root'):
+    if 'clade' in root.keys():
+        print('parent-child {0} <- {1}'.format(parent, root['name']))
+        parents.append(parent)
+        children.append(root['name'])
+        [flatten_plotly(x, parents, children, root['name']) for x in root['clade']]
+    else:
+        parents.append(parent)
+        children.append(root['name'])
 
 ###########################################################################
 input_file = '../data/phyloxml-hmp.xml'
@@ -44,10 +50,22 @@ out = xml_to_json(input_file)
 unnest = out['phyloxml']['phylogeny']['clade']
 unnest['name'] = 'root'
 
-traverse_depth(unnest, max_depth = 6, depth = 0)
-# depth = max_depth(unnest)
-# print('max depth', depth)
+# produce json for python d3 graph
+traverse_depth(unnest, max_depth = 4, depth = 0)
+# json = json.dumps(unnest)
+# json = json.replace("clade", "children")
+# write_out_json(json, output_file)
 
-json = json.dumps(unnest)
-json = json.replace("clade", "children")
-write_out_json(json, output_file)
+# produce flattened arrays for plotly graph
+# reuses json structure from d3
+parents = []
+children = []
+flatten_plotly(unnest, parents, children, '')
+print()
+print(parents)
+print()
+print(children)
+print()
+k = len(parents)
+values = [1] * k
+print(values)
