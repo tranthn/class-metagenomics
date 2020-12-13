@@ -1,6 +1,8 @@
 // d3.json("flare.json").then(function(data) {
 d3.json("phylo-test.json").then(function(data) {
     console.log(data);
+    child_attr = "value"
+        // child_attr = "branch_length"
 
     width = 932
     radius = width / 6
@@ -16,8 +18,8 @@ d3.json("phylo-test.json").then(function(data) {
 
     partition = data => {
         const root = d3.hierarchy(data)
-            .sum(d => d["@branch_length"])
-            .sort((a, b) => b["@branch_length"] - a["@branch_length"]);
+            .sum(d => d["value"])
+            .sort((a, b) => b["value"] - a["value"]);
         return d3.partition()
             .size([2 * Math.PI, root.height + 1])
             (root);

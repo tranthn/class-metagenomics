@@ -1,0 +1,709 @@
+{
+    "name": "root",
+    "children": [{
+            "name": "_PROTEOBACTERIA_{8114}",
+            "branch_length": "0.02768",
+            "children": [{
+                    "name": "_DEFERRIBACTERES__DEFERRIBACTERES__DEFERRIBACTERALES__DEFERRIBACTERACEAE_{10}",
+                    "branch_length": "0.12131",
+                    "children": [{
+                            "name": "DESULFURISPIRILLUM_INDICUM_S5[653733]{0}",
+                            "branch_length": "0.48814",
+                            "value": 1
+                        },
+                        {
+                            "name": "_DEFERRIBACTERES__DEFERRIBACTERES__DEFERRIBACTERALES__DEFERRIBACTERACEAE_{9}",
+                            "branch_length": "0.26757",
+                            "children": [{
+                                    "name": "_DEFERRIBACTERES__DEFERRIBACTERES__DEFERRIBACTERALES__DEFERRIBACTERACEAE_{5}",
+                                    "branch_length": "0.05343",
+                                    "children": [{
+                                            "name": "CALDITERRIVIBRIO_NITROREDUCENS_DSM_19672[768670]{1}",
+                                            "branch_length": "0.27744",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "_DEFERRIBACTERES__DEFERRIBACTERES__DEFERRIBACTERALES__DEFERRIBACTERACEAE_{4}",
+                                            "branch_length": "0.04321",
+                                            "children": [{
+                                                    "name": "DEFERRIBACTER_DESULFURICANS_SSM1[639282]{2}",
+                                                    "branch_length": "0.20811",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "FLEXISTIPES_SINUSARABICI_DSM_4947[717231]{3}",
+                                                    "branch_length": "0.27052",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "_DENITROVIBRIO__DENITROVIBRIO_ACETIPHILUS__DENITROVIBRIO_ACETIPHILUS_DSM_12809_{8}",
+                                    "branch_length": "0.30985",
+                                    "children": [{
+                                            "name": "DENITROVIBRIO_ACETIPHILUS_DSM_12809[522772]{6}",
+                                            "branch_length": "0.00088",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "BURKHOLDERIA_SP._YI23[1097668]{7}",
+                                            "branch_length": "1.73614",
+                                            "value": 1
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "_PROTEOBACTERIA_{8113}",
+                    "branch_length": "0.03505",
+                    "children": [{
+                            "name": "_BACTEROIDETES_CHLOROBI_GROUP_{1235}",
+                            "branch_length": "0.02362",
+                            "children": [{
+                                    "name": "_SPIROCHAETES__SPIROCHAETIA__SPIROCHAETALES_{491}",
+                                    "branch_length": "0.01989",
+                                    "children": [{
+                                            "name": "_CHLAMYDIAE_VERRUCOMICROBIA_GROUP_{251}",
+                                            "branch_length": "0.03434",
+                                            "children": [{
+                                                    "name": "_ELUSIMICROBIA_{83}",
+                                                    "branch_length": "0.20105",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_CHLAMYDIAE_VERRUCOMICROBIA_GROUP_{250}",
+                                                    "branch_length": "0.0432",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "_SPIROCHAETES__SPIROCHAETIA__SPIROCHAETALES_{490}",
+                                            "branch_length": "0.00783",
+                                            "children": [{
+                                                    "name": "SALTERN_METAGENOME[496920]{252}",
+                                                    "branch_length": "0.85817",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_SPIROCHAETES__SPIROCHAETIA__SPIROCHAETALES_{489}",
+                                                    "branch_length": "0.03434",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "_BACTEROIDETES_CHLOROBI_GROUP_{1234}",
+                                    "branch_length": "0.0258",
+                                    "children": [{
+                                            "name": "_PROTEOBACTERIA_{518}",
+                                            "branch_length": "0.05864",
+                                            "children": [{
+                                                    "name": "_SAR202_CLUSTER__SAR202_CLUSTER_BACTERIUM_SCGC_AAA240_N13__CANDIDATE_DIVISION_NKB19__UNCLASSIFIED_CANDIDATE_DIVISION_NKB19__HYDROGENEDENTES_BACTERIUM_JGI_0000039_J10_{496}",
+                                                    "branch_length": "0.06895",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_PROTEOBACTERIA_{517}",
+                                                    "branch_length": "0.06051",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "_BACTEROIDETES_CHLOROBI_GROUP_{1233}",
+                                            "branch_length": "0.04336",
+                                            "children": [{
+                                                    "name": "_BACTEROIDETES_CHLOROBI_GROUP_{1215}",
+                                                    "branch_length": "0.02938",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_UNCLASSIFIED_BACTERIA_{1232}",
+                                                    "branch_length": "0.06061",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "_PROTEOBACTERIA_{8112}",
+                            "branch_length": "0.01591",
+                            "children": [{
+                                    "name": "_PROTEOBACTERIA_{8110}",
+                                    "branch_length": "0.02413",
+                                    "children": [{
+                                            "name": "_PROTEOBACTERIA_{1404}",
+                                            "branch_length": "0.03661",
+                                            "children": [{
+                                                    "name": "_ATRIBACTERIA_{1250}",
+                                                    "branch_length": "0.04997",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_PROTEOBACTERIA_{1403}",
+                                                    "branch_length": "0.02776",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "_FIRMICUTES_{8109}",
+                                            "branch_length": "0.03103",
+                                            "children": [{
+                                                    "name": "_ACTINOBACTERIA__ACTINOBACTERIA_{3415}",
+                                                    "branch_length": "0.03492",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_BACILLI_{8108}",
+                                                    "branch_length": "0.03503",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "FOSSIL_METAGENOME[444079]{8111}",
+                                    "branch_length": "0.78402",
+                                    "value": 1
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "_DELTAPROTEOBACTERIA_{8425}",
+            "branch_length": "0.02868",
+            "children": [{
+                    "name": "_ACIDOBACTERIA_{8297}",
+                    "branch_length": "0.03448",
+                    "children": [{
+                            "name": "_ACIDOBACTERIA_{8227}",
+                            "branch_length": "0.05014",
+                            "children": [{
+                                    "name": "_ACIDOBACTERIA_{8197}",
+                                    "branch_length": "0.03548",
+                                    "children": [{
+                                            "name": "_ACIDOBACTERIA_{8195}",
+                                            "branch_length": "0.08365",
+                                            "children": [{
+                                                    "name": "_AMINICENANTES__UNCLASSIFIED_AMINICENANTES_{8137}",
+                                                    "branch_length": "0.40761",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_ACIDOBACTERIA_{8194}",
+                                                    "branch_length": "0.03468",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "[1704025]{8196}",
+                                            "branch_length": "0.62302",
+                                            "value": 1
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "_CANDIDATE_DIVISION_NC10_{8226}",
+                                    "branch_length": "0.07195",
+                                    "children": [{
+                                            "name": "1.000{8220}",
+                                            "branch_length": "0.23974",
+                                            "children": [{
+                                                    "name": "[1802105]{8198}",
+                                                    "branch_length": "0.20561",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "1.000{8219}",
+                                                    "branch_length": "0.09408",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "_CANDIDATE_DIVISION_NC10_{8225}",
+                                            "branch_length": "0.14613",
+                                            "children": [{
+                                                    "name": "[1640516]{8221}",
+                                                    "branch_length": "0.31166",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_CANDIDATE_DIVISION_NC10_{8224}",
+                                                    "branch_length": "0.28215",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "_NITROSPIRAE__NITROSPIRA__NITROSPIRALES__NITROSPIRACEAE_{8296}",
+                            "branch_length": "0.02466",
+                            "children": [{
+                                    "name": "_NITROSPINAE__NITROSPINIA__NITROSPINALES__NITROSPINACEAE__NITROSPINA_{8250}",
+                                    "branch_length": "0.03341",
+                                    "children": [{
+                                            "name": "_NITROSPINAE__NITROSPINIA__NITROSPINALES__NITROSPINACEAE__NITROSPINA_{8248}",
+                                            "branch_length": "0.0529",
+                                            "children": [{
+                                                    "name": "_NITROSPINAE__NITROSPINIA__NITROSPINALES__NITROSPINACEAE__NITROSPINA_{8242}",
+                                                    "branch_length": "0.04787",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_CANDIDATUS_ENTOTHEONELLA_{8247}",
+                                                    "branch_length": "0.07276",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "[1817878]{8249}",
+                                            "branch_length": "0.66668",
+                                            "value": 1
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "_NITROSPIRAE__NITROSPIRA__NITROSPIRALES__NITROSPIRACEAE_{8295}",
+                                    "branch_length": "0.08225",
+                                    "children": [{
+                                            "name": "_NITROSPIRAE__NITROSPIRA__NITROSPIRALES__NITROSPIRACEAE_{8275}",
+                                            "branch_length": "0.03299",
+                                            "children": [{
+                                                    "name": "[1801708]{8251}",
+                                                    "branch_length": "0.4379",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_NITROSPIRAE__NITROSPIRA__NITROSPIRALES__NITROSPIRACEAE_{8274}",
+                                                    "branch_length": "0.07881",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "_THERMODESULFOVIBRIO__THERMODESULFOVIBRIO_YELLOWSTONII__THERMODESULFOVIBRIO_YELLOWSTONII_DSM_11347_{8294}",
+                                            "branch_length": "0.13191",
+                                            "children": [{
+                                                    "name": "_THERMODESULFOVIBRIO__THERMODESULFOVIBRIO_YELLOWSTONII__THERMODESULFOVIBRIO_YELLOWSTONII_DSM_11347_{8290}",
+                                                    "branch_length": "0.10432",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "1.000{8293}",
+                                                    "branch_length": "0.10736",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "_DELTAPROTEOBACTERIA_{8424}",
+                    "branch_length": "0.03517",
+                    "children": [{
+                            "name": "_THERMODESULFOBACTERIA__THERMODESULFOBACTERIA__THERMODESULFOBACTERIALES__THERMODESULFOBACTERIACEAE_{8306}",
+                            "branch_length": "0.08402",
+                            "children": [{
+                                    "name": "1.000{8300}",
+                                    "branch_length": "0.31643",
+                                    "children": [{
+                                            "name": "[1640508]{8298}",
+                                            "branch_length": "0.2412",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "[1797756]{8299}",
+                                            "branch_length": "0.26591",
+                                            "value": 1
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "_THERMODESULFOBACTERIA__THERMODESULFOBACTERIA__THERMODESULFOBACTERIALES__THERMODESULFOBACTERIACEAE_{8305}",
+                                    "branch_length": "0.2208",
+                                    "children": [{
+                                            "name": "THERMODESULFATATOR_INDICUS_DSM_15286[667014]{8301}",
+                                            "branch_length": "0.21019",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "_THERMODESULFOBACTERIUM_{8304}",
+                                            "branch_length": "0.22822",
+                                            "children": [{
+                                                    "name": "THERMODESULFOBACTERIUM_COMMUNE_DSM_2178[289377]{8302}",
+                                                    "branch_length": "0.14853",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "THERMODESULFOBACTERIUM_GEOFONTIS_OPF15[795359]{8303}",
+                                                    "branch_length": "0.12073",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "_DELTAPROTEOBACTERIA_{8423}",
+                            "branch_length": "0.03866",
+                            "children": [{
+                                    "name": "_DELTAPROTEOBACTERIA_{8391}",
+                                    "branch_length": "0.0264",
+                                    "children": [{
+                                            "name": "_DELTAPROTEOBACTERIA_{8389}",
+                                            "branch_length": "0.03489",
+                                            "children": [{
+                                                    "name": "_DELTAPROTEOBACTERIA_{8327}",
+                                                    "branch_length": "0.02974",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_DELTAPROTEOBACTERIA_{8388}",
+                                                    "branch_length": "0.03687",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "DESULFOMONILE_TIEDJEI_DSM_6799[706587]{8390}",
+                                            "branch_length": "0.54757",
+                                            "value": 1
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "_DELTAPROTEOBACTERIA_{8422}",
+                                    "branch_length": "0.04391",
+                                    "children": [{
+                                            "name": "_SYNTROPHUS__SYNTROPHUS_ACIDITROPHICUS__SYNTROPHUS_ACIDITROPHICUS_SB_{8394}",
+                                            "branch_length": "0.26882",
+                                            "children": [{
+                                                    "name": "[1538640]{8392}",
+                                                    "branch_length": "0.23356",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "SYNTROPHUS_ACIDITROPHICUS_SB[56780]{8393}",
+                                                    "branch_length": "0.20671",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "_DESULFUROMONADALES_{8421}",
+                                            "branch_length": "0.04108",
+                                            "children": [{
+                                                    "name": "_DESULFUROMONADALES_{8419}",
+                                                    "branch_length": "0.10062",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "[1797882]{8420}",
+                                                    "branch_length": "0.4972",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "_PROTEOBACTERIA_{12664}",
+            "branch_length": "0.0254",
+            "children": [{
+                    "name": "_DELTAPROTEOBACTERIA_{8476}",
+                    "branch_length": "0.05509",
+                    "children": [{
+                            "name": "_MYXOCOCCALES_{8456}",
+                            "branch_length": "0.08481",
+                            "children": [{
+                                    "name": "_MYXOCOCCALES_{8444}",
+                                    "branch_length": "0.17028",
+                                    "children": [{
+                                            "name": "_ANAEROMYXOBACTER_{8430}",
+                                            "branch_length": "0.22507",
+                                            "children": [{
+                                                    "name": "ANAEROMYXOBACTER_SP._FW109_5[404589]{8426}",
+                                                    "branch_length": "0.0566",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_ANAEROMYXOBACTER_DEHALOGENANS_{8429}",
+                                                    "branch_length": "0.07881",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "_MYXOCOCCALES_{8443}",
+                                            "branch_length": "0.21663",
+                                            "children": [{
+                                                    "name": "CYSTOBACTER_FUSCUS_DSM_2262[1242864]{8431}",
+                                                    "branch_length": "0.0673",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_MYXOCOCCALES_{8442}",
+                                                    "branch_length": "0.02598",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "_MYXOCOCCALES_{8455}",
+                                    "branch_length": "0.07472",
+                                    "children": [{
+                                            "name": "_SORANGIINEAE_{8449}",
+                                            "branch_length": "0.16302",
+                                            "children": [{
+                                                    "name": "SANDARACINUS_AMYLOLYTICUS[927083]{8445}",
+                                                    "branch_length": "0.34113",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_SORANGIUM__SORANGIUM_CELLULOSUM_{8448}",
+                                                    "branch_length": "0.35384",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "_NANNOCYSTINEAE_{8454}",
+                                            "branch_length": "0.10546",
+                                            "children": [{
+                                                    "name": "HALIANGIUM_OCHRACEUM_DSM_14365[502025]{8450}",
+                                                    "branch_length": "0.41697",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_NANNOCYSTACEAE_{8453}",
+                                                    "branch_length": "0.30728",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "_BDELLOVIBRIONALES_{8475}",
+                            "branch_length": "0.10644",
+                            "children": [{
+                                    "name": "_BDELLOVIBRIONACEAE__BDELLOVIBRIO_{8465}",
+                                    "branch_length": "0.34615",
+                                    "children": [{
+                                            "name": "[1797388]{8457}",
+                                            "branch_length": "0.34316",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "_BDELLOVIBRIONACEAE__BDELLOVIBRIO_{8464}",
+                                            "branch_length": "0.16539",
+                                            "children": [{
+                                                    "name": "BDELLOVIBRIO_EXOVORUS_JSS[1184267]{8458}",
+                                                    "branch_length": "0.22911",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_BDELLOVIBRIO_BACTERIOVORUS_{8463}",
+                                                    "branch_length": "0.11052",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "_BACTERIOVORACACEAE__BACTERIOVORAX__BACTERIOVORAX_MARINUS__BACTERIOVORAX_MARINUS_SJ_{8474}",
+                                    "branch_length": "0.07524",
+                                    "children": [{
+                                            "name": "1.000{8468}",
+                                            "branch_length": "0.32921",
+                                            "children": [{
+                                                    "name": "[1797403]{8466}",
+                                                    "branch_length": "0.21527",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "[1797383]{8467}",
+                                                    "branch_length": "0.19578",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "_BACTERIOVORACACEAE__BACTERIOVORAX__BACTERIOVORAX_MARINUS__BACTERIOVORAX_MARINUS_SJ_{8473}",
+                                            "branch_length": "0.50692",
+                                            "children": [{
+                                                    "name": "[1797392]{8469}",
+                                                    "branch_length": "0.27103",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_BACTERIOVORACACEAE__BACTERIOVORAX__BACTERIOVORAX_MARINUS__BACTERIOVORAX_MARINUS_SJ_{8472}",
+                                                    "branch_length": "0.0675",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "_PROTEOBACTERIA_{12663}",
+                    "branch_length": "0.04197",
+                    "children": [{
+                            "name": "_SAR324_CLUSTER_{8483}",
+                            "branch_length": "0.41215",
+                            "children": [{
+                                    "name": "SAR324_CLUSTER_BACTERIUM_JCVI_SC_AAA005[1073573]{8477}",
+                                    "branch_length": "0.35006",
+                                    "value": 1
+                                },
+                                {
+                                    "name": "_SAR324_CLUSTER_{8482}",
+                                    "branch_length": "0.23944",
+                                    "children": [{
+                                            "name": "SAR324_CLUSTER_BACTERIUM_SCGC_AB_629_O05[1131279]{8478}",
+                                            "branch_length": "0.09812",
+                                            "value": 1
+                                        },
+                                        {
+                                            "name": "_SAR324_CLUSTER_{8481}",
+                                            "branch_length": "0.06766",
+                                            "children": [{
+                                                    "name": "SAR324_CLUSTER_BACTERIUM_SCGC_AAA240_J09[913331]{8479}",
+                                                    "branch_length": "0.01396",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "SAR324_CLUSTER_BACTERIUM_SCGC_AAA001_C10[913329]{8480}",
+                                                    "branch_length": "0.0204",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "_PROTEOBACTERIA_{12662}",
+                            "branch_length": "0.07946",
+                            "children": [{
+                                    "name": "_ALPHAPROTEOBACTERIA_{9378}",
+                                    "branch_length": "0.03988",
+                                    "children": [{
+                                            "name": "_ALPHAPROTEOBACTERIA_{9374}",
+                                            "branch_length": "0.07863",
+                                            "children": [{
+                                                    "name": "BIOREACTOR_METAGENOME[1076179]{8484}",
+                                                    "branch_length": "0.61485",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_ALPHAPROTEOBACTERIA_{9373}",
+                                                    "branch_length": "0.13175",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "_MAGNETOCOCCALES__MAGNETOCOCCACEAE__MAGNETOCOCCUS__MAGNETOCOCCUS_MARINUS__MAGNETOCOCCUS_MARINUS_MC_1_{9377}",
+                                            "branch_length": "0.08526",
+                                            "children": [{
+                                                    "name": "[1805333]{9375}",
+                                                    "branch_length": "0.47673",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "MAGNETOCOCCUS_MARINUS_MC_1[156889]{9376}",
+                                                    "branch_length": "0.42772",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "_GAMMAPROTEOBACTERIA_{12661}",
+                                    "branch_length": "0.05961",
+                                    "children": [{
+                                            "name": "_ZETAPROTEOBACTERIA_{9399}",
+                                            "branch_length": "0.17799",
+                                            "children": [{
+                                                    "name": "_ZETAPROTEOBACTERIA_{9395}",
+                                                    "branch_length": "0.20879",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_GALLIONELLA_SP._SCGC_AAA018_N21__SEDIMENT_METAGENOME_{9398}",
+                                                    "branch_length": "0.1054",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "_GAMMAPROTEOBACTERIA_{12660}",
+                                            "branch_length": "0.04341",
+                                            "children": [{
+                                                    "name": "METAGENOME[256318]{9400}",
+                                                    "branch_length": "0.70665",
+                                                    "value": 1
+                                                },
+                                                {
+                                                    "name": "_GAMMAPROTEOBACTERIA_{12659}",
+                                                    "branch_length": "0.02544",
+                                                    "value": 1
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
