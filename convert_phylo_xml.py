@@ -32,17 +32,11 @@ def traverse_depth(root, max_depth = None, depth = 0):
 
 def flatten_plotly(root, parents = [], children = [], parent = 'root'):
     if 'clade' in root.keys():
-        name_value = ''
-        if 'name' in root.keys():
-            name_value = root['name']
-        children.append(name_value)
-        [flatten_plotly(x, parents, children, name_value) for x in root['clade']]
+        children.append(root['name'])
+        [flatten_plotly(x, parents, children, root['name']) for x in root['clade']]
     else:
         parents.append(parent)
-        name_value = ''
-        if 'name' in root.keys():
-            name_value = root['name']
-        children.append(name_value)
+        children.append(root['name'])
 
 ################# main #################
 parser = argparse.ArgumentParser(description='Converts a phyloXML file to nested JSON')
@@ -63,19 +57,21 @@ if max_depth == -1:
 out = xml_to_json(input_file)
 unnest = out['phyloxml']['phylogeny']['clade']
 unnest['name'] = 'root'
-traverse_depth(unnest, max_depth = max_depth, depth = 0)
 print('max depth', max_depth)
 
 # produce json for python d3 graph
 if (plot_type == 'd3'):
+    traverse_depth(unnest, max_depth = max_depth, depth = 0)
     json = json.dumps(unnest)
     json = json.replace("clade", "children")
     write_out_json(json, output_file)
 elif (plot_type == 'plotly'):
     # produce flattened arrays for plotly graph
     # reuses json structure from d3
+    traverse_depth(unnest, max_depth = max_depth, depth = 0)
     parents = []
     children = []
+    print(unnest)
     flatten_plotly(unnest, parents, children, '')
     # print()
     # print(parents)
