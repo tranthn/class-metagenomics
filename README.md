@@ -23,13 +23,40 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 * *Note*: the URL cited in the GitHub link is outdated, while the figshare link is more recent and works as 12/2020
 
 ### Installation
-1. the figshare archive will download as `5755404.zip`, which should be unziped and contains 4 zip archives within it:
+
+*Warning*: These PhyloSift binaries were built targeting a 32-bit operating system, which means it will not work on the latest Mac OS X 15.7 (Catalina) build.
+
+1. Download the **figshare** archive directly from a browser (downloads as `5755404.zip`) or via command line, like so:
+
+        # make directory to hold phylosift executables and markers/NCBI DB
+        mkdir <phylosift-root>
+        cd <phylosift-root>
+
+        # Linux or Ubuntu
+        wget -O phylosift.zip https://ndownloader.figshare.com/articles/5755404/versions/4
+
+        # Mac OS X
+        curl https://ndownloader.figshare.com/articles/5755404/versions/4 -o phylosift.zip
+
+2. the archive should be unzipped, using the following command:
+        
+        # on Linux or Ubuntu, you may need to install the unzip utility first
+        sudo apt install unzip
+        unzip phylosift.zip 
+ 
+3.  unzipped file will extract 4 tar archives within it:
     1. `phylosift_v1.0.1.tar.bz2`
     2. `markers_20140913.tgz` - older version of the target markers from the v1.0 of PhyloSift
     3. `markers.tgz` - this is the latest version of the markers from 2018, so this should be unpacked
     4. `ncbi.tgz`
 
-1. copy and unzip files 1, 3, 4 from above into a directory which we will refer to as `<phylosift-root>`, so our file structure will look like:
+            # extract *.tgz files using following command
+            tar -xf <filename>
+
+            # extract *.bz2 file using following command
+            tar -xjf phylosift_v1.0.1.tar.bz2
+
+4. copy and unzip files 1, 3, 4 from above into a directory which we will refer to as `<phylosift-root>`, so our file structure will look like:
 
         <phylosift-root>/
         |-- phylosift_v1.0.1/
@@ -45,8 +72,8 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
         The metagenome-file-name-prefix value is automatically based off the name of the input FASTA/FASTQ file passed into the PhyloSift run
 
-1. navigate to `<phylosift-root>/phylosift_v1.0.1`
-1. modify the configuration file `phylosiftrc`, lines 43 - 47:
+5. navigate to `<phylosift-root>/phylosift_v1.0.1`
+6. modify the configuration file `phylosiftrc`, lines 43 - 47:
 
         # modifying this ensures that PhyloSift will the local NCBI database and markers archive from step 2, rather than trying to load them over the web
         $marker_dir= "<phylosift-root>/markers";
@@ -55,12 +82,16 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
         $marker_base_url = "";
         $ncbi_url = "";
 
-2. PhyloSift comes with sample data that can be used to test it, which takes about 30 minutes:
+7. PhyloSift comes with sample data that can be used to test it, which takes about 30 minutes:
   
         # outputs to  <phylosift-root>/phylosift_v1.0.1/PS_temp/HMP_1.fastq.gz/
         # more details on files are at phylosift: https://phylosift.wordpress.com/tutorials/phylosift-outputs/
         cd <phylosift-root>/phylosift_v1.0.1
         ./phylosift all --paired tutorial_data/HMP_1.fastq.gz tutorial_data/HMP_2.fastq.gz
+
+8. Debugging: if you had failed runs, PhyloSift won't re-run unless you clear out the partial output from PS_temp:
+
+        rm -rf PS_temp/**
 
 ### sample metageome
 * Metagenome: [sample fastq](https://portal.hmpdacc.org/files/596fc2de57601ec08a01fdee59e998a1)
@@ -76,6 +107,8 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
 ### Python Dependency Installation
 
+        pip3 install numpy
+        pip3 install pandas
         pip3 install plotly
         pip3 install xmldtodict
 

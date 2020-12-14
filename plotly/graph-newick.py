@@ -34,19 +34,20 @@ def calculate_distance_matrix(fname):
 
     return dist_matrix, leaves
 
-def draw_dendrogram(input_file):
-    # out = read_newick_file(input_file)
+def draw_dendrogram(input_file, output_file):
     dist_matrix, labels = calculate_distance_matrix(input_file)
 
     # generate dendrogram given the calculated distance matrix
     fig = ff.create_dendrogram(dist_matrix, labels = labels, orientation = 'left')
     fig.update_layout(width = 1200, height = 1200)
-    fig.show()
+    fig.write_html(output_file)
 
 ################# main #################
 parser = argparse.ArgumentParser(description='Generate a Plotly sunburst graph')
 parser.add_argument('-i', '--input', dest='input', help='plotly input file path, output from the convert_phylo_xml script', required=True)
+parser.add_argument('-o', '--output', dest='output', help='plotly output HTML file path', required=True)
 args = parser.parse_args()
 input_file = args.input
+output_file = args.output
 
-draw_dendrogram(input_file)
+draw_dendrogram(input_file, output_file)
