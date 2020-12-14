@@ -1,6 +1,8 @@
 # Metagenomics Final - Phylogenetics Visualization
 Course: 410.734
+
 Name: Emily Tran [ttran66]
+
 Date: 12/14/2020
 
 ## Project Goal
@@ -61,7 +63,7 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
         ./phylosift all --paired tutorial_data/HMP_1.fastq.gz tutorial_data/HMP_2.fastq.gz
 
 ### sample metageome
-* Metagenome: [sample*.fastq](https://portal.hmpdacc.org/files/596fc2de57601ec08a01fdee59e998a1)
+* Metagenome: [sample fastq](https://portal.hmpdacc.org/files/596fc2de57601ec08a01fdee59e998a1)
    - ID: SRS104093
    - Download link: [http://downloads.hmpdacc.org/dacc/hhs/genome/microbiome/wgs/analysis/hmwgsqc/v2/SRS104093.tar.bz2]()
    - Subject: [HMP link](https://portal.hmpdacc.org/cases/596fc2de57601ec08a01fdee59087b8a)
@@ -72,7 +74,7 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
 * Python3 and its module manager *pip3* are required
 
-### Python dependencies
+### Python Dependency Installation
 
         pip3 install plotly
         pip3 install xmldtodict
@@ -83,7 +85,7 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
 ### File Format Conversion
 
-* phyloxML to Plotly format
+* phyloXML to Plotly format
 
         # -i: input file path
         # -o: file to store the intermediary data structure
@@ -98,7 +100,11 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
 ## 3: Graph Generation
 
-* The following snippet will generate a Plotly dendrogram given a newick file
+* phyloXML Plotly output to Plotly sunburst graph:
+
+        ./graph-phylo.py -i ../plotly.out
+
+* Newick to Plotly denodrogram
 
         # -i: the input newick file
         ./graph-newick.py -i ../../data/newick-sample.txt
