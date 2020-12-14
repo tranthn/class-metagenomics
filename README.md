@@ -93,11 +93,10 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
         rm -rf PS_temp/**
 
-### sample metageome
-* Metagenome: [sample fastq](https://portal.hmpdacc.org/files/596fc2de57601ec08a01fdee59e998a1)
-   - ID: SRS104093
-   - Download link: [http://downloads.hmpdacc.org/dacc/hhs/genome/microbiome/wgs/analysis/hmwgsqc/v2/SRS104093.tar.bz2]()
-   - Subject: [HMP link](https://portal.hmpdacc.org/cases/596fc2de57601ec08a01fdee59087b8a)
+### Sample Metageome
+* Metagenome: [sample *fa](https://portal.hmpdacc.org/files/54a24ca84a57a7d5b06687939f620d69)
+   - Throat/Gingiva sample from Human Microbiome Project
+   - Download link: [	https://downloads.hmpdacc.org/dacc/hhs/genome/microbiome/wgs/analysis/hmbsa/v1/Throat.tar.bz2]()
 
 ---
 
@@ -135,9 +134,9 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
 * phyloXML Plotly output to Plotly sunburst graph:
 
-        ./graph-phylo.py -i ../plotly.out
+        ./plotly-phylo.py -i ../plotly.out -o output.html
 
-* Newick to Plotly denodrogram
+* Newick to Plotly denodrogram, works directly without a conversion script
 
         # -i: the input newick file
-        ./graph-newick.py -i ../../data/newick-sample.txt
+        ./plotly-newick.py -i ../../data/newick-sample.txt -o output.html

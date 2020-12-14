@@ -1,8 +1,6 @@
-// d3.json("flare.json").then(function(data) {
-d3.json("phylo-test.json").then(function(data) {
+d3.json("test.json").then(function(data) {
     console.log(data);
     child_attr = "value"
-        // child_attr = "branch_length"
 
     width = 932
     radius = width / 6
