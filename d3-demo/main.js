@@ -3,7 +3,7 @@ d3.json('test.json').then(function(data) {
     child_attr = 'value'
 
     width = 932
-    radius = width / 6
+    radius = width / 7
     format = d3.format(',d')
 
     arc = d3.arc()
@@ -23,7 +23,7 @@ d3.json('test.json').then(function(data) {
             (root);
     }
 
-    color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1))
+    color = d3.scaleOrdinal(d3.quantize(d3.interpolateCool, data.children.length + 1))
 
     const root = partition(data);
 

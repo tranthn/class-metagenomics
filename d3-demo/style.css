@@ -12,13 +12,12 @@
     z-index: 2;
 }
 
-.navigation h1,
-h2,
-h3 {
+.navigation h3 {
     display: inline;
     line-height: 5.2rem;
     padding: 0;
     text-decoration: none;
+    margin: 0;
 }
 
 #main {
@@ -34,4 +33,8 @@ h3 {
 #demo-links a {
     display: inline;
     line-height: 5.2rem;
+}
+
+#class-title {
+    margin-top: 60px;
 }
