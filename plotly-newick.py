@@ -5,9 +5,9 @@ import numpy as np
 from ete3 import Tree
 from itertools import combinations
 
-# sample string for newick
-newickstr = "(Bovine:0.69395,(Gibbon:0.36079,(Orang:0.33636,(Gorilla:0.17147,(Chimp:0.19268, Human:0.11927):0.08386):0.06124):0.15057):0.54939,Mouse:1.21460):0.10;"
-
+# since newick is more simplified with only branch lengths
+# we will need to back-calculate the distance matrix
+# to be able to feed in the right data structure to the Plotly denodrgram
 def calculate_distance_matrix(fname):
     tree = Tree(fname, quoted_node_names=True, format=1)
     leaves = tree.get_leaf_names()
@@ -34,16 +34,19 @@ def calculate_distance_matrix(fname):
 
     return dist_matrix, leaves
 
+# main method to calculate distance matrix
+# draws the dendrogram figure and outputs it to an HTML file
 def draw_dendrogram(input_file, output_file):
     dist_matrix, labels = calculate_distance_matrix(input_file)
 
     # generate dendrogram given the calculated distance matrix
     fig = ff.create_dendrogram(dist_matrix, labels = labels, orientation = 'left')
     fig.update_layout(width = 1200, height = 1200)
+    print('\nSaving dendrogram diagram to: {0}\n'.format(output_file))
     fig.write_html(output_file)
 
 ################# main #################
-parser = argparse.ArgumentParser(description='Generate a Plotly sunburst graph')
+parser = argparse.ArgumentParser(description='Generate a Plotly sunburst graph as HTML')
 parser.add_argument('-i', '--input', dest='input', help='plotly input file path, output from the convert_phylo_xml script', required=True)
 parser.add_argument('-o', '--output', dest='output', help='plotly output HTML file path', required=True)
 args = parser.parse_args()

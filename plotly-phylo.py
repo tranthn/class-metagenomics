@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
+import sys
 import argparse
 import plotly.express as px
 
 # reads in the data arrays from file
 # file will contain 1 array per line, as plain string, e.g:
-#   ['abc', 'def']
+#   ['parent', 'child1']
+#   ['child1', 'child2']
+#   [1, 1]
 #
 # we will eval the string to convert it to an actual Python array
 def read_values_from_file(fname):
-    with open(fname) as f:
-        parents = eval(f.readline())
-        children = eval(f.readline())
-        values = eval(f.readline())
+    try:
+        with open(fname) as f:
+            parents = eval(f.readline())
+            children = eval(f.readline())
+            values = eval(f.readline())
+    except:
+        print('\nThere was an issue reading Plotly input file, exiting...\n')
+        sys.exit(1)
 
     # parents = the parent node name
     # children = the child node name
@@ -34,14 +41,20 @@ def plot_sunburst(input_file, output_file):
         names="children",
         values="values",
     )
+    print('\nSaving sunburst diagram to: {0}\n'.format(output_file))
     fig.write_html(output_file)
 
 ################# main #################
-parser = argparse.ArgumentParser(description='Generate a Plotly sunburst graph')
+parser = argparse.ArgumentParser(description='Generate a Plotly sunburst graph as HTML')
 parser.add_argument('-i', '--input', dest='input', help='plotly input file path, output from the convert_phylo_xml script', required=True)
-parser.add_argument('-o', '--output', dest='output', help='plotly output HTML file path', required=True)
+parser.add_argument('-o', '--output', dest='output', help='plotly output HTML file path', required=False)
 args = parser.parse_args()
 
 input_file = args.input
 output_file = args.output
+
+# if there was no output_file set, we'll contextually set it
+if output_file is None:
+    output_file = input_file + '.html'
+
 plot_sunburst(input_file, output_file)

@@ -117,26 +117,84 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
 ### File Format Conversion
 
-* phyloXML to Plotly format
+* `convert_phylo_xml.py` script has the following arguments:
 
-        # -i: input file path
-        # -o: file to store the intermediary data structure
-        # -d: max traversal depth when converting the phyloXML structure, to help limit the tree depth/overall node count
-        # -p: the target plot type, which determines the data structure output, options = [d3, plotly]
-        ./convert_phylo_xml.py -i ../data/phylo-test.xml -o plotly.out -d 4 -p plotly
+        > ./convert_phylo_xml.py --help                                                                                                       
+                usage: convert_phylo_xml.py [-h] -i INPUT [-o OUTPUT] -p PLOTTYPE
+                                        [-d MAXDEPTH]
+
+                Converts a phyloXML file to nested JSON (D3.js) or flat arrays (Plotly)
+
+                optional arguments:
+                -h, --help            show this help message and exit
+                -i INPUT, --input INPUT
+                                        phyloXML file path, must be XML
+                -o OUTPUT, --output OUTPUT
+                                        output file name, e.g. test.json or plotly.out
+                -p PLOTTYPE, --plot-type PLOTTYPE
+                                        which plot library format to conver to, options =
+                                        [plotly, d3]
+                -d MAXDEPTH, --max-depth MAXDEPTH
+                                        max depth of the output JSON file, default = 5, -1 =
+                                        no maximum
+
+* phyloXML to Plotly format
+        
+        ./convert_phylo_xml.py -i sample-data/phylo-test.xml -o plotly.out -d 4 -p plotly
 
 * phyloXML to JSON/D3-compatible format
 
-        ./convert_phylo_xml.py -i ../data/phylo-test.xml -o test.json -d 4 -p d3
+        ./convert_phylo_xml.py -i sample-data/phylo-test.xml -o test.json -d 4 -p d3
 ---
 
 ## 3: Graph Generation
 
-* phyloXML Plotly output to Plotly sunburst graph:
+### phyloXML Plotly
+* takes in output from `convert_phylo_xml.py`, outputs to Plotly sunburst graph
 
+        > ./plotly-phylo.py --help 
+                usage: plotly-phylo.py [-h] -i INPUT [-o OUTPUT]
+
+                Generate a Plotly sunburst graph as HTML
+
+                optional arguments:
+                -h, --help            show this help message and exit
+                -i INPUT, --input INPUT
+                                        plotly input file path, output from the
+                                        convert_phylo_xml script
+                -o OUTPUT, --output OUTPUT
+                                        plotly output HTML file path
+
+
+* example run:
+        
         ./plotly-phylo.py -i ../plotly.out -o output.html
 
-* Newick to Plotly denodrogram, works directly without a conversion script
+* example sunburst diagram:
+
+![sunburst](imgs/plotly_sunburst.png)
+
+### Newick to Plotly Dendrogram
+* works directly without a conversion script
+
+        > ./plotly-newick.py --help
+                usage: plotly-newick.py [-h] -i INPUT -o OUTPUT
+
+                Generate a Plotly sunburst graph as HTML
+
+                optional arguments:
+                -h, --help            show this help message and exit
+                -i INPUT, --input INPUT
+                                        plotly input file path, output from the
+                                        convert_phylo_xml script
+                -o OUTPUT, --output OUTPUT
+                                        plotly output HTML file path
+
+* example run:
 
         # -i: the input newick file
-        ./plotly-newick.py -i ../../data/newick-sample.txt -o output.html
+        ./plotly-newick.py -i sample-data/newick-sample.txt -o output.html
+
+* example dendrogram:
+
+![dendrogram](imgs/plotly_denodrogram.png)
