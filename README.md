@@ -5,6 +5,18 @@ Name: Emily Tran [ttran66]
 
 Date: 12/14/2020
 
+- [Metagenomics Final - Phylogenetics Visualization](#metagenomics-final---phylogenetics-visualization)
+  - [Project Goal](#project-goal)
+  - [1: PhyloSift](#1-phylosift)
+    - [Installation](#installation)
+    - [Sample Metageome](#sample-metageome)
+  - [2: Data Format Conversion](#2-data-format-conversion)
+    - [Python Dependency Installation](#python-dependency-installation)
+    - [File Format Conversion](#file-format-conversion)
+  - [3: Graph Generation](#3-graph-generation)
+    - [phyloXML Plotly](#phyloxml-plotly)
+    - [Newick to Plotly Dendrogram](#newick-to-plotly-dendrogram)
+
 ## Project Goal
 * This project is focused on visualizations for phylogenetic trees, going through the following steps:
     1. The setup and usage of a tool that takes in a metagenome sample and produces phylogenies in a structured output format
@@ -14,8 +26,8 @@ Date: 12/14/2020
 PhyloSift will be used to process a metagenomic sample and generate a phyloXML output to be converted. While there are several tools out there that do process phyloXML already ([archaeopteryx](http://www.phylosoft.org/archaeopteryx/) being one of the most popular chocies), these tend to be specialized phylogeny tools. I hope to convert more standard biological formats into something more generic that can be used by general purpose plotting or graphing libraries. The two main plotting libraries I will examine are Plotly and D3.js, linked below.
 
 1. [Plotly](https://plotly.com/)
-2. [D3.js](https://d3js.org/)
-        - demo codes were based off examples from [https://observablehq.com/@d3/gallery](https://observablehq.com/@d3/gallery)
+2. [D3.js](https://d3js.org/):
+   1.  demo codes were based off examples from [https://observablehq.com/@d3/gallery](https://observablehq.com/@d3/gallery)
 
 ## 1: PhyloSift
 * phylosift: https://figshare.com/articles/PhyloSift_markers_database/5755404
