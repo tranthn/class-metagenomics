@@ -231,7 +231,7 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 ---
 
 ## Demo Notes
-* This will be deployed to Google Cloud VM for grading, the D3 demo will be served to <VM IP Instance>:8000
+* This will be deployed to Google Cloud VM for grading, the D3 demo will be served to `<VM IP Instance>`:8000
         - the VM contains PhyloSift installation in the home directory, for use if desired
         - this repository is cloned to the VM in the home directory, with the demo being served for the D3 graphs, from `d3-demo/`
         - the D3 demo files expects the JSON file to be named `test.json`, which is hard-coded in the JavaScript files
