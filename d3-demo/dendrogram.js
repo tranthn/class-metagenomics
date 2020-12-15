@@ -13,13 +13,6 @@ d3.json('test.json').then(function(data) {
     const svg = d3.select('#main').append('svg')
         .attr('viewBox', [-30, -400, width, width]);
 
-    function autoBox() {
-        document.body.appendChild(this);
-        const { x, y, width, height } = this.getBBox();
-        document.body.removeChild(this);
-        return [x, y, width, height];
-    }
-
     svg.append('g')
         .attr('fill', 'none')
         .attr('stroke', '#555')

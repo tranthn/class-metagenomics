@@ -48,9 +48,14 @@ def draw_dendrogram(input_file, output_file):
 ################# main #################
 parser = argparse.ArgumentParser(description='Generate a Plotly sunburst graph as HTML')
 parser.add_argument('-i', '--input', dest='input', help='plotly input file path, output from the convert_phylo_xml script', required=True)
-parser.add_argument('-o', '--output', dest='output', help='plotly output HTML file path', required=True)
+parser.add_argument('-o', '--output', dest='output', help='plotly output HTML file path', required=False)
 args = parser.parse_args()
+
 input_file = args.input
 output_file = args.output
+
+# if there was no output_file set, we'll contextually set it
+if output_file is None:
+    output_file = input_file + '.html'
 
 draw_dendrogram(input_file, output_file)

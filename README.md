@@ -15,6 +15,7 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
 1. [Plotly](https://plotly.com/)
 2. [D3.js](https://d3js.org/)
+        - demo codes were based off examples from [https://observablehq.com/@d3/gallery](https://observablehq.com/@d3/gallery)
 
 ## 1: PhyloSift
 * phylosift: https://figshare.com/articles/PhyloSift_markers_database/5755404
@@ -140,11 +141,16 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
 * phyloXML to Plotly format
         
-        ./convert_phylo_xml.py -i sample-data/phylo-test.xml -o plotly.out -d 4 -p plotly
+         ./convert_phylo_xml.py -i demo/phylo-test.xml -p plotly  -d 5 
+
+        Writing out Plotly arrays to: demo/phylo-test.out
 
 * phyloXML to JSON/D3-compatible format
 
-        ./convert_phylo_xml.py -i sample-data/phylo-test.xml -o test.json -d 4 -p d3
+        ./convert_phylo_xml.py -i demo/phylo-test.xml -p d3 -d 5
+
+        Writing out json to: demo/phylo-test.json
+
 ---
 
 ## 3: Graph Generation
@@ -152,8 +158,8 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 ### phyloXML Plotly
 * takes in output from `convert_phylo_xml.py`, outputs to Plotly sunburst graph
 
-        > ./plotly-phylo.py --help 
-                usage: plotly-phylo.py [-h] -i INPUT [-o OUTPUT]
+        > ./plotly_phylo.py --help 
+                usage: plotly_phylo.py [-h] -i INPUT [-o OUTPUT]
 
                 Generate a Plotly sunburst graph as HTML
 
@@ -168,7 +174,9 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
 * example run:
         
-        ./plotly-phylo.py -i ../plotly.out -o output.html
+        ./plotly_phylo.py -i demo/phylo-test.out -o demo/plotly-phylo.html
+
+        Saving sunburst diagram to: demo/plotly-phylo.html
 
 * example sunburst diagram:
 
@@ -177,8 +185,8 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 ### Newick to Plotly Dendrogram
 * works directly without a conversion script
 
-        > ./plotly-newick.py --help
-                usage: plotly-newick.py [-h] -i INPUT -o OUTPUT
+        > ./plotly_newick.py --help
+                usage: plotly_newick.py [-h] -i INPUT -o OUTPUT
 
                 Generate a Plotly sunburst graph as HTML
 
@@ -190,10 +198,16 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
                 -o OUTPUT, --output OUTPUT
                                         plotly output HTML file path
 
-* example run:
+* example run 1, using specific output file:
 
-        # -i: the input newick file
-        ./plotly-newick.py -i sample-data/newick-sample.txt -o output.html
+        ./plotly_newick.py -i demo/newick-sample.txt -o demo/newick.html
+
+
+* example run 2, using defualt output file:
+        
+        ./plotly_newick.py -i demo/life.txt                                                                                                                final
+
+        Saving dendrogram diagram to: demo/life.txt.html
 
 * example dendrogram:
 
