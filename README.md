@@ -16,6 +16,7 @@ Date: 12/14/2020
   - [3: Graph Generation](#3-graph-generation)
     - [phyloXML Plotly](#phyloxml-plotly)
     - [Newick to Plotly Dendrogram](#newick-to-plotly-dendrogram)
+  - [Demo Notes](#demo-notes)
 
 ## Project Goal
 * This project is focused on visualizations for phylogenetic trees, going through the following steps:
@@ -28,6 +29,8 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 1. [Plotly](https://plotly.com/)
 2. [D3.js](https://d3js.org/):
    1.  demo codes were based off examples from [https://observablehq.com/@d3/gallery](https://observablehq.com/@d3/gallery)
+
+---
 
 ## 1: PhyloSift
 * phylosift: https://figshare.com/articles/PhyloSift_markers_database/5755404
@@ -153,15 +156,15 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
 * phyloXML to Plotly format
         
-         ./convert_phylo_xml.py -i demo/phylo-test.xml -p plotly  -d 5 
+         ./convert_phylo_xml.py -i demo-input-files/phylo-test.xml -p plotly  -d 5 
 
-        Writing out Plotly arrays to: demo/phylo-test.out
+        Writing out Plotly arrays to: demo-input-files/phylo-test.out
 
 * phyloXML to JSON/D3-compatible format
 
-        ./convert_phylo_xml.py -i demo/phylo-test.xml -p d3 -d 5
+        ./convert_phylo_xml.py -i demo-input-files/phylo-test.xml -p d3 -d 5
 
-        Writing out json to: demo/phylo-test.json
+        Writing out json to: demo-input-files/phylo-test.json
 
 ---
 
@@ -186,9 +189,9 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
 * example run:
         
-        ./plotly_phylo.py -i demo/phylo-test.out -o demo/plotly-phylo.html
+        ./plotly_phylo.py -i demo-input-files/phylo-test.out -o demo-input-files/plotly-phylo.html
 
-        Saving sunburst diagram to: demo/plotly-phylo.html
+        Saving sunburst diagram to: demo-input-files/plotly-phylo.html
 
 * example sunburst diagram:
 
@@ -212,15 +215,24 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
 * example run 1, using specific output file:
 
-        ./plotly_newick.py -i demo/newick-sample.txt -o demo/newick.html
+        ./plotly_newick.py -i demo-input-files/newick-sample.txt -o demo-input-files/newick.html
 
 
 * example run 2, using defualt output file:
         
-        ./plotly_newick.py -i demo/life.txt                                                                                                                final
+        ./plotly_newick.py -i demo-input-files/life.txt
 
-        Saving dendrogram diagram to: demo/life.txt.html
+        Saving dendrogram diagram to: plotly-demo/life.txt.html
 
 * example dendrogram:
 
 ![dendrogram](imgs/plotly_denodrogram.png)
+
+---
+
+## Demo Notes
+* This will be deployed to Google Cloud VM for grading, the D3 demo will be served to <VM IP Instance>:8000
+        - the VM contains PhyloSift installation in the home directory, for use if desired
+        - this repository is cloned to the VM in the home directory, with the demo being served for the D3 graphs, from `d3-demo/`
+        - the D3 demo files expects the JSON file to be named `test.json`, which is hard-coded in the JavaScript files
+* Since the VMs are headless we cannot open the Plotly HTML figures generated, so examples are located within the codebase in the `examples/` folder
