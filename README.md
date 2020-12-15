@@ -33,9 +33,10 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 ---
 
 ## 1: PhyloSift
+* this tool will be used to do phylogenetic analysis given a metagenome sample
 * phylosift: https://figshare.com/articles/PhyloSift_markers_database/5755404
     - GitHub: https://github.com/gjospin/PhyloSift
-    - PhyloSiftt API and usage documentation: https://phylosift.wordpress.com/tutorials/running-phylosift/phylosift-overview/
+    - PhyloSift API and usage documentation: https://phylosift.wordpress.com/tutorials/running-phylosift/phylosift-overview/
 * *Note*: the URL cited in the GitHub link is outdated, while the figshare link is more recent and works as 12/2020
 
 ### Installation
@@ -110,9 +111,10 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
         rm -rf PS_temp/**
 
 ### Sample Metageome
-* Metagenome: [sample *fa](https://portal.hmpdacc.org/files/54a24ca84a57a7d5b06687939f620d69)
+* Metagenome: [sample .fa](https://portal.hmpdacc.org/files/54a24ca84a57a7d5b06687939f620d69)
    - Throat/Gingiva sample from Human Microbiome Project
-   - Download link: [	https://downloads.hmpdacc.org/dacc/hhs/genome/microbiome/wgs/analysis/hmbsa/v1/Throat.tar.bz2]()
+   - Download link: [https://downloads.hmpdacc.org/dacc/hhs/genome/microbiome/wgs/analysis/hmbsa/v1/Throat.tar.bz2]()
+   - This was used to generate the sample XML located in `demo-input-files/throat.xml`
 
 ---
 
@@ -156,7 +158,7 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
 * phyloXML to Plotly format
         
-         ./convert_phylo_xml.py -i demo-input-files/phylo-test.xml -p plotly  -d 5 
+        ./convert_phylo_xml.py -i demo-input-files/phylo-test.xml -p plotly -d 5 
 
         Writing out Plotly arrays to: demo-input-files/phylo-test.out
 
@@ -217,6 +219,7 @@ PhyloSift will be used to process a metagenomic sample and generate a phyloXML o
 
         ./plotly_newick.py -i demo-input-files/newick-sample.txt -o demo-input-files/newick.html
 
+        Saving dendrogram diagram to: demo-input-files/newick.html
 
 * example run 2, using defualt output file:
         
